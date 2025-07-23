@@ -1,0 +1,31 @@
+2025-07-23 11:02:24,442 INFO: Starting Auto File Organizer Agent
+2025-07-23 11:02:24,443 INFO: Running single scan (once)
+2025-07-23 11:02:27,800 INFO: Scanned 14 files.
+2025-07-23 11:02:28,585 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:28,597 INFO: File: .DS_Store | Rename → .DS_Store | Move →  | Delete? False
+2025-07-23 11:02:29,278 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:29,282 INFO: File: .localized | Rename → .localized | Move →  | Delete? False
+2025-07-23 11:02:29,917 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:29,923 INFO: File: IMG_5780.HEIC | Rename → IMG_5780.HEIC | Move →  | Delete? False
+2025-07-23 11:02:30,554 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:30,557 INFO: File: IMG_5779.HEIC | Rename → IMG_5779.HEIC | Move →  | Delete? False
+2025-07-23 11:02:31,602 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:31,605 INFO: File: .DS_Store | Rename → .DS_Store | Move →  | Delete? False
+2025-07-23 11:02:32,607 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:32,609 INFO: File: Screenshot 2025-07-18 at 1.44.52 PM.png | Rename → Instagram_Screenshot_2025-07-18.png | Move → Pictures/Screenshots | Delete? False
+2025-07-23 11:02:33,476 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:33,479 INFO: File: Screenshot 2025-07-22 at 12.06.43 PM.png | Rename → Screenshot 2025-07-22 at 12.06.43 PM.png | Move →  | Delete? False
+2025-07-23 11:02:34,600 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:34,601 INFO: File: Screenshot 2025-07-18 at 2.34.51 PM.png | Rename → Screenshot 2025-07-18 at 2.34.51 PM.png | Move →  | Delete? False
+2025-07-23 11:02:35,215 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:35,219 INFO: File: .localized | Rename → .localized | Move →  | Delete? False
+2025-07-23 11:02:35,829 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:35,832 INFO: File: group.py | Rename → group.py | Move →  | Delete? False
+2025-07-23 11:02:36,453 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:36,456 INFO: File: Screenshot 2025-07-18 at 9.44.07 PM.png | Rename → Screenshot 2025-07-18 at 9.44.07 PM.png | Move →  | Delete? False
+2025-07-23 11:02:37,076 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:37,079 INFO: File: Screenshot 2025-07-18 at 9.43.56 PM.png | Rename → Screenshot 2025-07-18 at 9.43.56 PM.png | Move →  | Delete? False
+2025-07-23 11:02:37,825 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:37,828 INFO: File: Screenshot 2025-07-18 at 4.25.30 PM.png | Rename → Screenshot 2025-07-18 at 4.25.30 PM.png | Move →  | Delete? False
+2025-07-23 11:02:38,363 INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 11:02:38,367 INFO: File: .localized | Rename → .localized | Move →  | Delete? False

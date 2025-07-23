@@ -1,0 +1,8 @@
+monitor_folders:
+  - ~/Downloads
+  - ~/Desktop
+  - ~/Documents
+
+check_interval_minutes: 10
+auto_confirm: false
+root_folder: ~/Organized
