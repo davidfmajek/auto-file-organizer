@@ -28,6 +28,10 @@ def parse_args() -> argparse.Namespace:
         help="Path to YAML configuration file"
     )
     parser.add_argument(
+        "--prompt-file",
+        help="Path to a text file containing custom prompt for file organization"
+    )
+    parser.add_argument(
         "--once", action="store_true",
         help="Run a single scan and exit"
     )
@@ -46,12 +50,13 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def job(config: dict, dry_run: bool = False) -> None:
+def job(config: dict, dry_run: bool = False, custom_prompt: str = None) -> None:
     """
     Scan directories, generate suggestions, and apply or log actions.
 
     :param config: Configuration dict from config.yaml
     :param dry_run: If True, do not apply file operations.
+    :param custom_prompt: Optional custom prompt text for file organization
     """
     files = scan_directories(config)
     logging.info(f"Scanned {len(files)} files.")
@@ -60,7 +65,7 @@ def job(config: dict, dry_run: bool = False) -> None:
     root_folder = config.get('root_folder')
 
     for file_meta in files:
-        suggestion = suggest_actions(file_meta)
+        suggestion = suggest_actions(file_meta, custom_prompt=custom_prompt)
         logging.info(
             f"File: {file_meta['name']} | "
             f"Rename → {suggestion.get('suggested_name')} | "
@@ -104,17 +109,28 @@ def main() -> None:
         start_watcher(config, dry_run=args.dry_run)
         return
 
+    # Load custom prompt if provided
+    custom_prompt = None
+    if args.prompt_file and os.path.exists(args.prompt_file):
+        try:
+            with open(args.prompt_file, 'r') as f:
+                custom_prompt = f.read()
+            logging.info(f"Loaded custom prompt from {args.prompt_file}")
+        except Exception as e:
+            logging.error(f"Error loading custom prompt: {e}")
+            return
+
     # One-off execution
     if args.once:
         logging.info("Running single scan (once)")
-        job(config, dry_run=args.dry_run)
+        job(config, dry_run=args.dry_run, custom_prompt=custom_prompt)
         return
 
     # Scheduled polling mode
     interval = config.get('check_interval_minutes', 10)
     logging.info(f"Scheduling scans every {interval} minutes")
-    job(config, dry_run=args.dry_run)  # initial run
-    schedule.every(interval).minutes.do(job, config, args.dry_run)
+    job(config, dry_run=args.dry_run, custom_prompt=custom_prompt)  # initial run
+    schedule.every(interval).minutes.do(job, config, args.dry_run, custom_prompt)
 
     try:
         while True:

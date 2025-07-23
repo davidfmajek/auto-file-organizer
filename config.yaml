@@ -1,8 +1,7 @@
 monitor_folders:
   - ~/Downloads
-  - ~/Desktop
   - ~/Documents
+  - ~/Desktop
 
-check_interval_minutes: 10
-auto_confirm: false
-root_folder: ~/Organized
+auto_confirm: true
+root_folder: /Users/davidfmajek/Desktop

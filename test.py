@@ -35,7 +35,9 @@ def tmp_config(tmp_path):
 
 @pytest.fixture
 def sample_text_file(tmp_path):
-    file = tmp_path / 'inbox' / 'note.txt'
+    inbox = tmp_path / 'inbox'
+    inbox.mkdir(parents=True, exist_ok=True)  # Ensure the directory exists
+    file = inbox / 'note.txt'
     file.write_text('Hello world! This is a test. ' * 10)
     return file
 
@@ -82,9 +84,9 @@ def test_apply_suggestion_delete(tmp_path, sample_text_file):
 # --- Test suggest_actions stub ---
 
 def test_suggest_actions_json_parse(monkeypatch):
-    # Monkeypatch LLM chain.run to return valid JSON
+    # Monkeypatch LLM chain to return valid JSON
     from organizer import chain
-    monkeypatch.setattr(chain, 'run', lambda **kwargs: json.dumps({
+    monkeypatch.setattr(chain, '__call__', lambda **kwargs: json.dumps({
         'suggested_name': 'file1',
         'suggested_folder': 'Docs',
         'delete': False

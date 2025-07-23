@@ -11,10 +11,11 @@ class ChangeHandler(FileSystemEventHandler):
     """
     Handler for filesystem events that triggers the organizing job.
     """
-    def __init__(self, config, dry_run=False):
+    def __init__(self, config, dry_run=False, custom_prompt=None):
         super().__init__()
         self.config = config
         self.dry_run = dry_run
+        self.custom_prompt = custom_prompt
         self.auto_confirm = config.get('auto_confirm', False)
         self.root_folder = config.get('root_folder')
 
@@ -26,7 +27,7 @@ class ChangeHandler(FileSystemEventHandler):
         files = scan_directories(self.config)
         logging.info(f"[Watcher] Scanned {len(files)} files.")
         for file_meta in files:
-            suggestion = suggest_actions(file_meta)
+            suggestion = suggest_actions(file_meta, custom_prompt=self.custom_prompt)
             logging.info(
                 f"[Watcher] File: {file_meta['name']} | "
                 f"Rename → {suggestion.get('suggested_name')} | "
@@ -42,15 +43,16 @@ class ChangeHandler(FileSystemEventHandler):
                 )
 
 
-def start_watcher(config, dry_run=False):
+def start_watcher(config, dry_run=False, custom_prompt=None):
     """
     Start the watchdog observer for real-time monitoring.
 
     :param config: Configuration dict from config.yaml
     :param dry_run: If True, suggestions are logged but not applied.
+    :param custom_prompt: Optional custom prompt text for file organization
     """
     paths = config.get('monitor_folders', [])
-    event_handler = ChangeHandler(config, dry_run=dry_run)
+    event_handler = ChangeHandler(config, dry_run=dry_run, custom_prompt=custom_prompt)
     observer = Observer()
 
     for path in paths:
